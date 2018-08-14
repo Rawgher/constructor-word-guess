@@ -13,3 +13,20 @@ function Letter(characters) {
         this.guess = true;
     };
 };
+
+Letter.prototype.toString = function () {
+    if (this.guess) {
+        return this.characters;
+    }
+    return "_";
+};
+
+Letter.prototype.checkGuesses = function (check) {
+    if (check.toLowerCase() === this.characters || check.toUpperCase() === this.characters) {
+        this.guess = true;
+        return true;
+    };
+    return false;
+};
+
+module.exports = Letter;
