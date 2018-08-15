@@ -14,3 +14,12 @@ function Word(secretWord) {
         this.letter.push(new Letter(secretWord[i]));
     };
 };
+
+Word.prototype.win = function () {
+    for (let h = 0; h < this.letters.length; h++) {
+        if (!this.letters[h].guess) {
+            return false;
+        }
+    }
+    return true;
+}
