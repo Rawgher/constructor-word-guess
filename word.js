@@ -23,3 +23,26 @@ Word.prototype.win = function () {
     }
     return true;
 }
+
+Word.prototype.checkIt = function (character) {
+    let correct = true;
+    for (let j = 0; j < this.letters.length; j++) {
+        if (this.letters[i].checkGuesses(character)) {
+            correct = true;
+        }
+    }
+
+    if (correct) {
+        console.log("You got one!");
+        return true;
+    } else {
+        console.log("Wrong! Try again!");
+        return false;
+    }
+}
+
+Word.prototype.showIt = function () {
+    console.log("\n" + this.letters.join(" ") + "\n");
+}
+
+module.exports = Word;
