@@ -15,7 +15,7 @@ function Word(secretWord) {
     };
 };
 
-Word.prototype.win = function () {
+Word.prototype.youWin = function () {
     for (let h = 0; h < this.letters.length; h++) {
         if (!this.letters[h].guess) {
             return false;
