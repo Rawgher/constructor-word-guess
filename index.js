@@ -50,11 +50,13 @@ let start = function () {
 function newGame() {
     inquirer.prompt([
         {
+            type: "rawlist",
             name: "question",
-            message: "Want to play again? (Y/N)",
+            message: "Want to play again?",
+            choices: ["Yes","No"]
         }
     ]).then(function (arg) {
-        if (arg.question.toUpperCase() === "Y") {
+        if (arg.question == "Yes") {
             play = true;
             setItUp();
         };
