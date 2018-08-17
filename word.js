@@ -17,17 +17,17 @@ function Word(secretWord) {
 
 Word.prototype.youWin = function () {
     for (let h = 0; h < this.letters.length; h++) {
-        if (!this.letters[h].guess) {
+        if (!this.letters[h].guessedLetter) {
             return false;
         }
     }
     return true;
 }
 
-Word.prototype.checkIt = function (character) {
-    let correct = true;
+Word.prototype.refresh = function (characters) {
+    let correct = false;
     for (let j = 0; j < this.letters.length; j++) {
-        if (this.letters[i].checkGuesses(character)) {
+        if (this.letters[j].checkIt(characters)) {
             correct = true;
         }
     }

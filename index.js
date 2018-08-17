@@ -2,7 +2,7 @@ let Word = require("./word.js")
 let fs = require("fs");
 let inquirer = require("inquirer");
 
-let word;
+let secretWord;
 let guessesLeft;
 let play;
 let guessed;
@@ -20,13 +20,13 @@ let start = function () {
         ]).then(function(args) {
             let guess = args.letters[0];
 
-            if (!guess.includes(guessed) && alpha.includes(guessed) && !word.update(guessed)) {
+            if (!guessed.includes(guess) && alpha.includes(guess) && !secretWord.refresh(guess)) {
                 guessesLeft--;
-                guessed += guess;
+                guessed += guessed;
                 console.log("You have " + guessesLeft + " guesses left");
             }
             
-            word.showIt();
+            secretWord.showIt();
 
             if (guessesLeft < 1) {
                 play = false;
@@ -34,13 +34,13 @@ let start = function () {
                 newGame();
             }
 
-            if (word.youWin()) {
-                playing = false;
+            if (secretWord.youWin()) {
+                play = false;
                 console.log("Good job! You did it!");
                 newGame();
             }
 
-            if (playing) {
+            if (play) {
                 start();
             }
         });
@@ -50,13 +50,12 @@ let start = function () {
 function newGame() {
     inquirer.prompt([
         {
-            type: "confirm",
             name: "question",
-            message: "Want to play again?"
+            message: "Want to play again? (Y/N)",
         }
     ]).then(function (arg) {
-        if (arg.question.toLowerCase() === "y") {
-            playing = true;
+        if (arg.question.toUpperCase() === "Y") {
+            play = true;
             setItUp();
         };
     });
@@ -64,11 +63,12 @@ function newGame() {
 
 function setItUp() {
     let randomWord = Math.floor(txtWord.length * Math.random());
-    word = new Word(txtWord[randomWord]);
+    secretWord = new Word(txtWord[randomWord]);
     guessesLeft = 8;
-    playing = true;
+    play = true;
     guessed = "";
-    word.showIt();
+    secretWord.showIt();
+    
     start();
 }
 
