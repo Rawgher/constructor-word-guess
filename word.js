@@ -9,9 +9,9 @@ let Letter = require("./letter.js");
 let alpha = "abcdefghijklmnopqrstuvwxyz";
 
 function Word(secretWord) {
-    this.letter = [];
+    this.letters = [];
     for (let i=0; i < secretWord.length; i++) {
-        this.letter.push(new Letter(secretWord[i]));
+        this.letters.push(new Letter(secretWord[i]));
     };
 };
 
