@@ -1,3 +1,7 @@
+//to do - add function for if they hit the same letter again
+//to do - comment everything out
+//to do - clean up formatting 
+
 let Word = require("./word.js")
 let fs = require("fs");
 let inquirer = require("inquirer");
