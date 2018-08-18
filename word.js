@@ -1,13 +1,9 @@
-//contains Word constructor
-// used to create object representing current word the user is trying to guess
-// should contain: array of new letters representing letters from underlying word
-//function that returns a string representing the word. should call on each letter object from letter.js shows as underscore and concatenate together
-//function takes character as an argument and calls the guess function on each letter from letter.js
-
+// setting up require file
 let Letter = require("./letter.js");
 
-let alpha = "abcdefghijklmnopqrstuvwxyz";
+// let alpha = "abcdefghijklmnopqrstuvwxyz";
 
+// function that 
 function Word(secretWord) {
     this.letters = [];
     for (let i=0; i < secretWord.length; i++) {
@@ -15,6 +11,7 @@ function Word(secretWord) {
     };
 };
 
+// function that runs if all the input letters matches the letters in the secret word array
 Word.prototype.youWin = function () {
     for (let h = 0; h < this.letters.length; h++) {
         if (!this.letters[h].guessedLetter) {
@@ -24,6 +21,7 @@ Word.prototype.youWin = function () {
     return true;
 }
 
+// function that runs after every letter guess
 Word.prototype.refresh = function (characters) {
     let correct = false;
     for (let j = 0; j < this.letters.length; j++) {
@@ -32,15 +30,19 @@ Word.prototype.refresh = function (characters) {
         }
     }
 
+    // runs if the user matches one of the letters in the secret word
     if (correct) {
         console.log("You got one!");
         return true;
+
+    // else statement that runs if the user does not guess one of the letters in the secret word 
     } else {
         console.log("Wrong! Try again!");
         return false;
     }
 }
 
+// function that inputs the underscores for the secret word with blank lines before and after it
 Word.prototype.showIt = function () {
     console.log("\n" + this.letters.join(" ") + "\n");
 }

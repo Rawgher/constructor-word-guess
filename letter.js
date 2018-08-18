@@ -1,7 +1,7 @@
-// contains Letter constructor 
+//setting up letters that can be used 
 let alpha = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
-// constructor should define: store underlying character, boolean if letter has been guessed, function returning underlying character if its guess, or place underscore if not guessed yet
+//
 function Letter(characters) {
     this.characters = characters;
     this.guessedLetter = false;
@@ -11,7 +11,7 @@ function Letter(characters) {
     };
 };
 
-// constructor displays underlying character or blank space (underscore) if letter was guessed or not
+//
 Letter.prototype.toString = function () {
     if (this.guessedLetter) {
         return this.characters;
@@ -19,9 +19,7 @@ Letter.prototype.toString = function () {
     return "_";
 };
 
-// takes character and checks it against underlying character, updates stored boolean value t otrue if guess correctly
-
-
+//
 Letter.prototype.checkIt = function (check) {
     if (check.toLowerCase() === this.characters || check.toUpperCase() === this.characters) {
         this.guessedLetter = true;
