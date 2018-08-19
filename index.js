@@ -1,5 +1,3 @@
-//to do - add more random words
-
 // setting up require files
 let Word = require("./word.js")
 let fs = require("fs");
