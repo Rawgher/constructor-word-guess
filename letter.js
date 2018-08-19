@@ -9,7 +9,9 @@ function Letter(characters) {
 
     // if the a part of the secret word is not part of the alpha variable, it will display them as is
     if (!(alpha.includes(characters))) {
+
         this.guessedLetter = true;
+
     };
 
 };
@@ -18,7 +20,9 @@ function Letter(characters) {
 Letter.prototype.toString = function () {
 
     if (this.guessedLetter) {
+
         return this.characters;
+
     }
 
     return "_";
@@ -29,12 +33,15 @@ Letter.prototype.toString = function () {
 Letter.prototype.checkIt = function (check) {
 
     if (check.toLowerCase() === this.characters || check.toUpperCase() === this.characters) {
+
         this.guessedLetter = true;
+
         return true;
+
     };
 
     return false;
-    
+
 };
 
 module.exports = Letter;

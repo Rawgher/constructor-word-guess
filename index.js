@@ -28,42 +28,52 @@ let start = function () {
 
         ]).then(function (args) {
 
-            // showing the secret word on the console
-            secretWord.showIt();
-
             // setting up a variable to recognize users input
             let guess = args.letters[0];
 
             // if statement that runs if the the user has not guessed a letter, the letter is allowed, and the letter is not in the word
             if (!guessed.includes(guess) && alpha.includes(guess) && !secretWord.refresh(guess)) {
+
                 guessesLeft--;
                 guessed += guess;
                 console.log("You have " + guessesLeft + " guesses left");
+
             }
 
             // else if statement that runs if the user tries to input a wrong letter second time
             else if (guessed.includes(guess)) {
+
                 console.log("You've already used that letter. Try another!");
                 guessesLeft;
-            };
+
+            }
+
+            // showing the secret word on the console after a letter has been guessed
+            secretWord.showIt();
 
             // if statement that will stop the game from running if the guesses left drop to 0. will ask the user if they would like to play again
             if (guessesLeft < 1) {
+
                 play = false;
                 console.log("You lost! Better luck next time.");
                 newGame();
+
             };
 
             // if statement that stops the game if the user gets the word right. will ask the user if they would like to play again
             if (secretWord.youWin()) {
+
                 play = false;
                 console.log("Good job! You did it!");
                 newGame();
+
             };
 
             // if statement will run the main game function as long as play is set to true
             if (play) {
+
                 start();
+
             };
 
         });
@@ -92,6 +102,7 @@ function newGame() {
         };
 
     });
+
 };
 
 
